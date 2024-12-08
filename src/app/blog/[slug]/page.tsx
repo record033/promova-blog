@@ -14,7 +14,7 @@ type PageProps = {
     };
 };
 
-export default function Page({ params }: PageProps) {
+export default function PostPage({ params }: PageProps) {
     const post = posts.find((post) => post.slug === params.slug);
 
     if (!post) {
