@@ -1,5 +1,5 @@
-import Search from '@/components/search/Search'
-import BlogPostsList from '@/components/blogPostsList/BlogPostsList'
+import Search from '@/components/Search'
+import BlogPostsList from '@/components/BlogPostsList'
 
 import { Metadata } from 'next'
 import { Suspense } from 'react';

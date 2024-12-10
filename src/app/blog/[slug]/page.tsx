@@ -1,7 +1,7 @@
 
 import { redirect } from 'next/navigation'
 import posts from "@/app/posts.json";
-import NavBackButton from '@/components/navBackButton/NavBackButton'
+import NavBackButton from '@/components/NavBackButton'
 
 type PageProps = {
     params: Promise<{

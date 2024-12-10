@@ -2,8 +2,8 @@
 import React, { useMemo } from 'react'
 import { useSearchParams } from 'next/navigation'
 import posts from '@/app/posts.json'
-import BlogPostCard from '@/components/blogPostCard/BlogPostCard'
-import NavigationButtons from '@/components/navigationButtons/NavigationButtons'
+import BlogPostCard from '@/components/BlogPostCard'
+import NavigationButtons from '@/components/NavigationButtons'
 
 
 
