@@ -13,11 +13,6 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "Scientific blog",
-  description: "Short articles about popular science for all ages",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
