@@ -8,6 +8,7 @@ const Search: React.FC = () => {
 
     const router = useRouter();
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const handleSearchChange = useCallback(
         debounce((query: string) => {
             const newUrl = new URL(window.location.href);
