@@ -1,12 +1,7 @@
 import React from 'react';
 
-type BlogPost = {
-  id: string;
-  slug: string;
-  title: string;
-  description: string;
-  text: string;
-};
+import { BlogPost } from '@/types'
+
 
 type BlogPostCardProps = {
   post: BlogPost;

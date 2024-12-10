@@ -26,6 +26,10 @@ const NavigationButtons: React.FC<NavigationButtonProps> = ({ currentPage, total
         }
     };
 
+    if (totalPages === 0) {
+        return null
+    }
+
     return (
 
         <div className="flex justify-center items-center mt-5 space-x-4">

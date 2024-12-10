@@ -1,10 +1,15 @@
 "use client"
 import React, { useState, useCallback } from 'react'
+
 import { debounce } from "lodash-es";
 import { useRouter } from 'next/navigation'
 
-const Search: React.FC = () => {
-    const [inputValue, setInputValue] = useState("");
+type SearchProps = {
+    search: string
+}
+
+const Search: React.FC<SearchProps> = ({ search }) => {
+    const [inputValue, setInputValue] = useState(search);
 
     const router = useRouter();
 
@@ -12,6 +17,7 @@ const Search: React.FC = () => {
     const handleSearchChange = useCallback(
         debounce((query: string) => {
             const newUrl = new URL(window.location.href);
+            newUrl.searchParams.set("page", "1")
             if (query) {
                 newUrl.searchParams.set("search", query);
             }

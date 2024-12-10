@@ -1,8 +1,8 @@
 import Search from '@/components/Search'
-import BlogPostsList from '@/components/BlogPostsList'
+import { BlogPostsList } from '@/components/BlogPostsList'
 
 import { Metadata } from 'next'
-import { Suspense } from 'react';
+import { PageProps } from '@/types'
 
 
 export const metadata: Metadata = {
@@ -36,14 +36,18 @@ export const metadata: Metadata = {
   }
 };
 
-export default function BlogPage() {
+const BlogPage: React.FC<PageProps> = async ({ searchParams }) => {
+  const search = ((await searchParams).search || "") as string
+
+  const page = +((await searchParams).page || "1")
+
   return (
     <div className="flex flex-col justify-between items-center gap-10 pt-5 pb-10">
       <h1 className="text-4xl">Blog</h1>
-      <Search />
-      <Suspense>
-        <BlogPostsList />
-      </Suspense>
+      <Search search={search} />
+      <BlogPostsList page={page} search={search} />
     </div>
   );
 }
+
+export default BlogPage
