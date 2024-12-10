@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import posts from "@/app/posts.json";
 
-const SITE_URL = "http://localhost:3000";
+const SITE_URL = "https://promova-blog.vercel.app/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
