@@ -2,6 +2,7 @@ import Search from '@/components/search/Search'
 import BlogPostsList from '@/components/blogPostsList/BlogPostsList'
 
 import { Metadata } from 'next'
+import { Suspense } from 'react';
 
 
 export const metadata: Metadata = {
@@ -37,10 +38,12 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <div className={"flex flex-col justify-between items-center gap-10 pt-5 pb-10"}>
+    <div className="flex flex-col justify-between items-center gap-10 pt-5 pb-10">
       <h1 className="text-4xl">Blog</h1>
       <Search />
-      <BlogPostsList />
+      <Suspense>
+        <BlogPostsList />
+      </Suspense>
     </div>
   );
 }

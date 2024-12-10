@@ -1,23 +1,17 @@
 
+import { redirect } from 'next/navigation'
 import posts from "@/app/posts.json";
 import NavBackButton from '@/components/navBackButton/NavBackButton'
 
-type Post = {
-    id: number;
-    slug: string;
-    title: string;
-    description: string;
-    text: string;
-};
-
 type PageProps = {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>
 };
 
-export const generateMetadata = ({ params }: PageProps) => {
-    const post = posts.find((post) => post.slug === params.slug);
+export const generateMetadata = async ({ params }: PageProps) => {
+    const slug = (await params).slug
+    const post = posts.find((post) => post.slug === slug);
     return {
         title: post?.title,
         description: post?.description,
@@ -28,16 +22,12 @@ export const generateMetadata = ({ params }: PageProps) => {
     }
 }
 
-export default function PostPage({ params }: PageProps) {
-    const post = posts.find((post) => post.slug === params.slug);
+export default async function PostPage({ params }: PageProps) {
+    const slug = (await params).slug
+    const post = posts.find((post) => post.slug === slug);
 
     if (!post) {
-        return (
-            <div className="container mx-auto px-5 max-w-3xl text-center mt-10">
-                <h1 className="text-2xl font-bold text-red-500">Post not found</h1>
-                <NavBackButton />
-            </div>
-        );
+        redirect("/404")
     }
 
     return (
@@ -46,7 +36,7 @@ export default function PostPage({ params }: PageProps) {
                 <h2 className="text-4xl font-bold text-gray-200">{post.title}</h2>
                 <p className="text-lg text-gray-300">{post.description}</p>
                 <section className="mt-6 text-left">
-                    <h2 className="text-2xl font-semibold text-gray-200 mb-4 text-center">Article</h2>
+                    <h3 className="text-2xl font-semibold text-gray-200 mb-4 text-center">Article</h3>
                     <p className="text-gray-300 leading-relaxed whitespace-pre-line">{post.text}</p>
                 </section>
             </article>
