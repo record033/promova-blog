@@ -36,6 +36,8 @@ export const metadata: Metadata = {
   }
 };
 
+export const revalidate = 3600
+
 const BlogPage: React.FC<PageProps> = async ({ searchParams }) => {
   const search = ((await searchParams).search || "") as string
 
