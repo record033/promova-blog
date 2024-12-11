@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
-import posts from "@/app/posts.json";
+import {getAllPosts} from '@/helpers/getPosts'
 
 const SITE_URL = "https://promova-blog.vercel.app/blog";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await getAllPosts()
   const staticRoutes = [
     {
       url: `${SITE_URL}/blog`,
