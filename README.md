@@ -1,4 +1,4 @@
-Deployed URL: 
+Deployed URL: https://promova-blog.vercel.app/
 
 ## Getting Started
 To get up and running:
