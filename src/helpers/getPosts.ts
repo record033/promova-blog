@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { EntrySkeletonType, Entry } from 'contentful'
 import client from '@/helpers/contentful'
 import { BlogPost } from '@/types';
@@ -16,7 +17,6 @@ type GetPostsResponse = {
 const getItemFields = (entryItem: Entry): BlogPost => {
   return {
     ...entryItem.fields,
-   // eslint-disable-next-line @typescript-eslint/no-explicit-any
    imageUrl: (entryItem.fields as any).blogImage.fields.file.url, 
    date: new Date(entryItem.sys.updatedAt)
   } as BlogPost
@@ -67,7 +67,6 @@ export const getAllPosts = async (): Promise<BlogPost[]> => {
 
 export const getPostBySlug = async (slug: string): Promise<BlogPost> => {
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const response = await client.getEntries<EntrySkeletonType<BlogPost>>({ content_type: 'blogPost', 'fields.slug[match]': slug} as any);
 
 
